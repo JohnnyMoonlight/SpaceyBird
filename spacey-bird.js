@@ -36,25 +36,30 @@ class Pipe extends Path2D {
     }
 
     hitPlayer(player) {
-        //const hitbox = player.getHitBox();
-        // Array of [x,y]
-        //for (const pair of hitbox) {
-            //x größer this.x UND x kleiner this.x+pipeWidth, dann ist kollision möglich
+        const hitbox = player.getHitBox();
+        // If the tip or the back part of the triangle are within the pipes, we need to check for collision.
+        if ((hitbox[0][0] > this.xPosition && hitbox[0][0]< this.xPosition + this.pipeWidth)
+            || (hitbox[1][0] > this.xPosition && hitbox[1][0]< this.xPosition + this.pipeWidth)
+        ) {
 
-        //    if (pair[0] > this.xPosition && pair[0]+this.pipeWidth) {
-                // betrachte obere linie hitbox[0] bis hitbox[1]
-                //für alle/viele Punkte auf der Linie, ist Punkt in Pipe?
-                // betrachte untere linie hitbox[1] bis hitbox[2]
-                
-        //    }
-        //}
+            let upperLineY1 = hitbox[0][1];
+            let upperLineY2 = hitbox[1][1];
+            // The hitbox is formed as triangle.
+            // The player is hit, if the upper or lower line of the triangle hit the pipe.
+            // The pipe is hit, if any integer y-pixel has a value in the range of the pipe-heights.
+            for (let pixelOnUpperLine = upperLineY1; pixelOnUpperLine < upperLineY2; pixelOnUpperLine++) {
+                if (pixelOnUpperLine < this.pipeHeight) return true;
+                if (pixelOnUpperLine > this.gameHeight-this.pipeHeight) return true;
+            }
+            let lowerLineY1 = hitbox[2][1];
+            let lowerLineY2 = hitbox[1][1];
 
-
-        if (player.playerX > this.xPosition && player.playerX < this.xPosition+this.pipeWidth && player.playerY-player.radius/2 < this.pipeHeight) return true;
-
-        if (player.playerX > this.xPosition && player.playerX < this.xPosition+this.pipeWidth && player.playerY+player.radius/2 > this.gameHeight-this.pipeHeight) return true;
-
-        return false;
+            for (let pixelOnLowerLine = lowerLineY1; pixelOnLowerLine < lowerLineY2; pixelOnLowerLine++) {
+                if (pixelOnLowerLine < this.pipeHeight) return true;
+                if (pixelOnLowerLine > this.gameHeight-this.pipeHeight) return true;
+            }
+            return false;
+        }
     }
 }
 
