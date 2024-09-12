@@ -1,0 +1,16 @@
+#gameContainer {
+    background-image: url("./background.jpg");
+    background-repeat: repeat-x;
+    background-size: cover;
+    animation: moveBackground 20s linear infinite;
+    -webkit-animation: moveBackground 60s linear infinite;
+}
+
+@keyframes moveBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100% 0;
+    }
+}
