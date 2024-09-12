@@ -303,7 +303,7 @@ class Player extends Path2D {
     this.soundManager = game.soundManager;
     this.flapEvent = new Event("flap");
     this.image = new Image();
-    this.image.src = "/resources/rocket.png";
+    this.image.src = "./resources/rocket.png";
     this.soundManager.registerSoundEvent(this.flapEvent);
     this.canvas.addEventListener("click", this._flapHandle);
   }
@@ -367,10 +367,10 @@ class SoundManager {
     this.canvas = document.getElementById("gameContainer");
     this.soundMap = new Map();
     this.eventToSoundMap = new Map();
-    this.start = "/resources/start.mp3";
-    this.flap = "/resources/flap.wav";
-    this.navSound = "/resources/flap.wav";
-    this.idea = "/resources/idea.wav";
+    this.start = "./resources/start.mp3";
+    this.flap = "./resources/flap.wav";
+    this.navSound = "./resources/flap.wav";
+    this.idea = "./resources/idea.wav";
     this.addSound("navEvent", this.navSound);
     this.addSound("start", this.start);
     this.addSound("flap", this.flap);
@@ -380,7 +380,7 @@ class SoundManager {
   addSound(soundName, sound) {
     this.soundMap.set(soundName, sound);
   }
-  
+
   registerSoundEvent(event, sound) {
     if (this.eventToSoundMap.has(event.type)) {
       return;
