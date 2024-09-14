@@ -106,6 +106,7 @@ class Game {
     this.gameState = this.GAME_STATES.MENU;
     this.canvas = document.getElementById("gameContainer");
     this.ctx = this.canvas.getContext("2d");
+
     this.debug = true;
     this.fpsCtx = this.canvas.getContext("2d");
     this.soundManager = new SoundManager();
@@ -293,9 +294,34 @@ class Menu extends Path2D {
   }
 }
 
+class PlayerImage {
+  imageMap = new Map();
+  constructor () {
+    this.imageFullPower = new Image();
+    this.imageFullPower.src = "./resources/rocket_blue_full_power.png";
+    this.imageHalfPower = new Image();
+    this.imageHalfPower.src = "./resources/rocket_blue_half_power.png";
+    this.imageNoPower = new Image();
+    this.imageNoPower.src = "./resources/rocket_blue_no_power.png";
+
+    this.imageMap.set("fullPower", this.imageFullPower);
+    this.imageMap.set("halfPower", this.imageHalfPower);
+    this.imageMap.set("noPower", this.imageNoPower);
+  }
+
+  getImageForPlayer(player) {
+    const acc = player.verticalAcceleration;
+    if (acc < -3) return this.imageMap.get("fullPower");
+    else if (acc >= -3 && acc < 0) return this.imageMap.get("halfPower");
+    else if (acc > 0) return this.imageMap.get("noPower");
+  }
+
+}
+
 class Player extends Path2D {
   constructor(canvas, game, playerX = 20, playerY = 10) {
     super();
+    this.playerImage = new PlayerImage();
     this.game = game;
     this.playerX = playerX;
     this.playerY = playerY;
@@ -306,7 +332,7 @@ class Player extends Path2D {
     this.soundManager = game.soundManager;
     this.flapEvent = new Event("flap");
     this.image = new Image();
-    this.image.src = "./resources/rocket.png";
+    this.image.src = "./resources/rocket_blue_full_power.png";
     this.soundManager.registerSoundEvent(this.flapEvent);
     this.canvas.addEventListener("click", this._flapHandle);
   }
@@ -314,7 +340,7 @@ class Player extends Path2D {
     this.flap();
   };
   draw(ctx) {
-    ctx.drawImage(this.image, this.playerX, this.playerY, 35, 35);
+    ctx.drawImage(this.playerImage.getImageForPlayer(this), this.playerX, this.playerY, 60, 30);
     if (this.game.debug) {
       ctx.save();
       ctx.lineWidth = 1;
@@ -337,8 +363,8 @@ class Player extends Path2D {
   getHitBox() {
     let hitbox = [
       [this.playerX, this.playerY],
-      [this.playerX + 35, this.playerY + 17.5],
-      [this.playerX, this.playerY + 35],
+      [this.playerX + 60, this.playerY + 15],
+      [this.playerX, this.playerY + 30],
     ];
     return hitbox;
   }
