@@ -290,7 +290,7 @@ class Menu extends Path2D {
 }
 
 class Player extends Path2D {
-  constructor(canvas, game, playerX = 20, playerY = 10, radius = 5) {
+  constructor(canvas, game, playerX = 20, playerY = 10) {
     super();
     this.game = game;
     this.playerX = playerX;
@@ -299,7 +299,6 @@ class Player extends Path2D {
     this.flapPower = -8;
     this.gravity = 0.2;
     this.canvas = canvas;
-    this.radius = radius;
     this.soundManager = game.soundManager;
     this.flapEvent = new Event("flap");
     this.image = new Image();
@@ -340,12 +339,11 @@ class Player extends Path2D {
     return hitbox;
   }
   move() {
-    if (this.playerY < this.game.gameHeight) {
+    if (this.playerY < this.game.gameHeight && this.playerY >= 0) {
       this.verticalAcceleration += this.gravity;
-    } else if (this.playerY < this.radius) {
+    } else if (this.playerY < 0) {
       this.verticalAcceleration = 0;
-    } else {
-      this.verticalAcceleration = 0;
+      this.playerY = 0;
     }
     this.playerY = this.playerY + this.verticalAcceleration;
   }
