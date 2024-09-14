@@ -2,7 +2,7 @@
   background-image: url("./resources/background.jpg");
   background-repeat: repeat-x;
   background-size: cover;
-  animation: moveBackground 20s linear infinite;
+  animation: moveBackground 60s linear infinite;
   -webkit-animation: moveBackground 60s linear infinite;
 }
 
