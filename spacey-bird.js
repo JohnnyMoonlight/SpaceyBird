@@ -175,7 +175,14 @@ class Game {
       this.scoreCtx.font = "10px Arial";
       this.scoreCtx.fillText(`Score:${this.points}`, 250, 10);
 
-      if (this.player.isDead(this.pipe) == true) {
+      if (
+        this.pipe.hitPlayer(this.player) ||
+        this.player.playerY > this.gameHeight
+      ) {
+        this.player.canvas.removeEventListener(
+          "click",
+          this.player._flapHandle
+        );
         this.score = this.pipe.number;
         this.endGame();
       } else {
@@ -350,13 +357,6 @@ class Player extends Path2D {
   flap() {
     this.verticalAcceleration = this.flapPower;
     this.canvas.dispatchEvent(this.flapEvent);
-  }
-  isDead(pipe) {
-    if (pipe.hitPlayer(this) || this.playerY > this.game.gameHeight) {
-      this.canvas.removeEventListener("click", this._flapHandle);
-      return true;
-    }
-    return false;
   }
 }
 
