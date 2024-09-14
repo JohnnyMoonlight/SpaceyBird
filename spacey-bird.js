@@ -106,8 +106,7 @@ class Game {
     this.gameState = this.GAME_STATES.MENU;
     this.canvas = document.getElementById("gameContainer");
     this.ctx = this.canvas.getContext("2d");
-
-    this.debug = true;
+    this.debug = false;
     this.fpsCtx = this.canvas.getContext("2d");
     this.soundManager = new SoundManager();
   }
@@ -294,7 +293,7 @@ class Menu extends Path2D {
   }
 }
 
-class PlayerImage {
+class PlayerImageSelector {
   imageMap = new Map();
   constructor () {
     this.imageFullPower = new Image();
@@ -314,6 +313,7 @@ class PlayerImage {
     if (acc < -3) return this.imageMap.get("fullPower");
     else if (acc >= -3 && acc < 0) return this.imageMap.get("halfPower");
     else if (acc > 0) return this.imageMap.get("noPower");
+    return this.imageMap.get("noPower");
   }
 
 }
@@ -321,7 +321,7 @@ class PlayerImage {
 class Player extends Path2D {
   constructor(canvas, game, playerX = 20, playerY = 10) {
     super();
-    this.playerImage = new PlayerImage();
+    this.playerImage = new PlayerImageSelector();
     this.game = game;
     this.playerX = playerX;
     this.playerY = playerY;
