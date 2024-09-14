@@ -241,7 +241,7 @@ class Menu extends Path2D {
   draw(ctx) {
     ctx.clearRect(0, 0, this.game.gameWidth, this.game.gameHeight);
     ctx.lineWidth = 10;
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.strokeRect(100, 100, 200, 200);
     ctx.font = "20px serif";
     ctx.fillText(this.heading, 80, 40);
@@ -251,7 +251,7 @@ class Menu extends Path2D {
       if (this.cursor == menuEntryId) {
         ctx.fillStyle = "orange";
       } else {
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "white";
       }
       ctx.fillText(
         this.menuEntries[menuEntryId].title,
