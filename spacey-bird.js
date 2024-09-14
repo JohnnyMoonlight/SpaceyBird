@@ -38,13 +38,16 @@ class Pipe extends Path2D {
 
   draw(ctx) {
     ctx.fillStyle = this.color;
+    // Upper Pipe
+    ctx.fillRect(this.xPosition, 0, this.pipeWidth, this.pipeHeight);
+    
+    // Lowe Pipe
     ctx.fillRect(
       this.xPosition,
       this.gameHeight - this.pipeHeight,
       this.pipeWidth,
       this.pipeHeight
     );
-    ctx.fillRect(this.xPosition, 0, this.pipeWidth, this.pipeHeight);
   }
 
   hitPlayer(player) {
@@ -103,13 +106,8 @@ class Game {
     this.gameState = this.GAME_STATES.MENU;
     this.canvas = document.getElementById("gameContainer");
     this.ctx = this.canvas.getContext("2d");
-
     this.debug = true;
-
     this.fpsCtx = this.canvas.getContext("2d");
-
-    this.scoreCtx = this.canvas.getContext("2d");
-
     this.soundManager = new SoundManager();
   }
 
@@ -130,6 +128,7 @@ class Game {
   }
 
   startGame() {
+    this.score =  0
     this.gameState = this.GAME_STATES.PLAY;
     this.player = new Player(this.canvas, this);
     this.pipe = new Pipe(this);
@@ -172,8 +171,6 @@ class Game {
           20
         );
       }
-      this.scoreCtx.font = "10px Arial";
-      this.scoreCtx.fillText(`Score:${this.points}`, 250, 10);
 
       if (
         this.pipe.hitPlayer(this.player) ||
