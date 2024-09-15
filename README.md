@@ -13,7 +13,6 @@ This game does not offer anything new to the gaming community. The game should s
 ## Contribution
 You are welcome to open pull requests or issues, if they serve the goal to make the code more understandable for the target audience. You can also offer better comments or change the structure, even architectural suggestions are welcome, if they improve the balance between simplicity and playability.
 
-
 ## Resources
 
 | File    			| Origin | License |
@@ -23,6 +22,7 @@ You are welcome to open pull requests or issues, if they serve the goal to make 
 | `resources/rocket_blue_full_power.png` 	| AI creation   | MIT-License |
 | `resources/rocket_blue_half_power.png` 	| AI creation   | MIT-License |
 | `resources/rocket_blue_no_power.png` 	    | AI creation   | MIT-License |
+| `resources/rocket_blue_icon.png` 	        | AI creation   | MIT-License |
 | **Sounds**			        |     	                        |                               |
 | `resources/flap.wav`    	| [link](https://freesound.org/people/dave.des/sounds/127196/)	| Creative Commons 0 |
 | `resources/start.mp3`    	| [link](https://freesound.org/people/AbdrTar/sounds/519985/)  | Creative Commons 0 |
