@@ -109,6 +109,7 @@ class Game {
     this.debug = false;
     this.fpsCtx = this.canvas.getContext("2d");
     this.soundManager = new SoundManager();
+    this.playerImageSelector = new PlayerImageSelector();
   }
 
   init() {
@@ -130,7 +131,7 @@ class Game {
   startGame() {
     this.score =  0
     this.gameState = this.GAME_STATES.PLAY;
-    this.player = new Player(this.canvas, this);
+    this.player = new Player(this.canvas, this, this.playerImageSelector);
     this.pipe = new Pipe(this);
   }
 
@@ -315,13 +316,12 @@ class PlayerImageSelector {
     else if (acc > 0) return this.imageMap.get("noPower");
     return this.imageMap.get("noPower");
   }
-
 }
 
 class Player extends Path2D {
-  constructor(canvas, game, playerX = 20, playerY = 10) {
+  constructor(canvas, game, playerImageSelector, playerX = 20, playerY = 10,) {
     super();
-    this.playerImage = new PlayerImageSelector();
+    this.playerImage = playerImageSelector;
     this.game = game;
     this.playerX = playerX;
     this.playerY = playerY;
