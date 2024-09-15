@@ -5,7 +5,7 @@ class Pipe extends Path2D {
     pipeHeight = 80,
     xPosition = 300,
     speed = 3,
-    color = "black"
+    color = "blue"
   ) {
     super();
     this.game = game;
