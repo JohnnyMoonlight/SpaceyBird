@@ -40,7 +40,7 @@ class Pipe extends Path2D {
     ctx.fillStyle = this.color;
     // Upper Pipe
     ctx.fillRect(this.xPosition, 0, this.pipeWidth, this.pipeHeight);
-    
+
     // Lowe Pipe
     ctx.fillRect(
       this.xPosition,
@@ -129,7 +129,7 @@ class Game {
   }
 
   startGame() {
-    this.score =  0
+    this.score = 0;
     this.gameState = this.GAME_STATES.PLAY;
     this.player = new Player(this.canvas, this, this.playerImageSelector);
     this.pipe = new Pipe(this);
@@ -296,7 +296,7 @@ class Menu extends Path2D {
 
 class PlayerImageSelector {
   imageMap = new Map();
-  constructor () {
+  constructor() {
     this.imageFullPower = new Image();
     this.imageFullPower.src = "./resources/rocket_blue_full_power.png";
     this.imageHalfPower = new Image();
@@ -319,7 +319,7 @@ class PlayerImageSelector {
 }
 
 class Player extends Path2D {
-  constructor(canvas, game, playerImageSelector, playerX = 20, playerY = 10,) {
+  constructor(canvas, game, playerImageSelector, playerX = 20, playerY = 10) {
     super();
     this.playerImage = playerImageSelector;
     this.game = game;
@@ -340,7 +340,13 @@ class Player extends Path2D {
     this.flap();
   };
   draw(ctx) {
-    ctx.drawImage(this.playerImage.getImageForPlayer(this), this.playerX, this.playerY, 60, 30);
+    ctx.drawImage(
+      this.playerImage.getImageForPlayer(this),
+      this.playerX,
+      this.playerY,
+      60,
+      30
+    );
     if (this.game.debug) {
       ctx.save();
       ctx.lineWidth = 1;
