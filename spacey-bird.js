@@ -260,8 +260,10 @@ class Menu extends Path2D {
 
   draw(ctx) {
     ctx.clearRect(0, 0, this.game.gameWidth, this.game.gameHeight);
+    ctx.fillStyle = "white";
     ctx.font = "20px serif";
-    ctx.fillText(this.heading, 80, 40);
+    ctx.textAlign = "center";
+    ctx.fillText(this.heading, this.game.gameWidth/2, 40);
     ctx.font = "10px sans-serif";
 
     for (let menuEntryId in this.menuEntries) {
@@ -272,7 +274,7 @@ class Menu extends Path2D {
       }
       ctx.fillText(
         this.menuEntries[menuEntryId].title,
-        175,
+        this.game.gameWidth/2,
         150 + menuEntryId * 30
       );
     }
