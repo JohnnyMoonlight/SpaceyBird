@@ -358,10 +358,12 @@ class Player extends Path2D {
     this.image = new Image();
     this.image.src = "./resources/rocket_blue_full_power.png";
     this.soundManager.registerSoundEvent(this.flapEvent);
-    this.canvas.addEventListener("click", this._flapHandle);
+    this.canvas.addEventListener("keyup", this._flapHandle);
   }
-  _flapHandle = (event, canvas) => {
-    this.flap();
+  _flapHandle = (event) => {
+    if (event.code == "Space") {
+      this.flap();
+    }
   };
   draw(ctx) {
     ctx.drawImage(
