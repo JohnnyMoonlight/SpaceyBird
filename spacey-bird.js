@@ -147,7 +147,10 @@ class Game {
     if (this.getGameState() == this.GAME_STATES.MENU) {
       let menuEntries = [
         new MenuEntry("START", () => this.startGame()),
-        new MenuEntry("CREDITS", () => this.gameState = this.GAME_STATES.CREDITS),
+        new MenuEntry(
+          "CREDITS",
+          () => (this.gameState = this.GAME_STATES.CREDITS)
+        ),
       ];
       let menu = new Menu(
         this.canvas,
@@ -195,7 +198,10 @@ class Game {
 
     if (this.getGameState() == this.GAME_STATES.END) {
       let menuEntries = [
-        new MenuEntry("MAIN MENU", () => this.gameState = this.GAME_STATES.MENU),
+        new MenuEntry(
+          "MAIN MENU",
+          () => (this.gameState = this.GAME_STATES.MENU)
+        ),
         new MenuEntry("RETRY", () => {
           this.startGame();
         }),
@@ -213,11 +219,11 @@ class Game {
     }
 
     if (this.getGameState() == this.GAME_STATES.CREDITS) {
-      let returnFunction = () => this.gameState = this.GAME_STATES.MENU;
+      let returnFunction = () => (this.gameState = this.GAME_STATES.MENU);
       let menuEntries = [
         new MenuEntry("Made with ♥  at", returnFunction),
         new MenuEntry("Zentrum für Technikkultur", returnFunction),
-        new MenuEntry("in  Landau by Tobias.", returnFunction)
+        new MenuEntry("in  Landau by Tobias.", returnFunction),
       ];
 
       let creditScreen = new Menu(
@@ -263,7 +269,7 @@ class Menu extends Path2D {
     ctx.fillStyle = "white";
     ctx.font = "20px serif";
     ctx.textAlign = "center";
-    ctx.fillText(this.heading, this.game.gameWidth/2, 40);
+    ctx.fillText(this.heading, this.game.gameWidth / 2, 40);
     ctx.font = "10px sans-serif";
 
     for (let menuEntryId in this.menuEntries) {
@@ -274,7 +280,7 @@ class Menu extends Path2D {
       }
       ctx.fillText(
         this.menuEntries[menuEntryId].title,
-        this.game.gameWidth/2,
+        this.game.gameWidth / 2,
         150 + menuEntryId * 30
       );
     }
