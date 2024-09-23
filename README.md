@@ -18,11 +18,11 @@ You are welcome to open pull requests or issues, if they serve the goal to make 
 | File    			| Origin | License |
 | ----------------------------- | ----------------------------- | ----------------------------- |
 | **Images** 			        |                               |                               |
-| `resources/background.jpg`  	| [link](https://www.goodfon.com/minimalism/wallpaper-download-1600x900-kosmos-art-pikseli-8bit-planeta-zvezdy-retro-grafika.html  | CC BY-NC 4.0, by https://www.goodfon.com/user/Kipish_f%C3%B6n/ |
-| `resources/rocket_blue_full_power.png` 	| AI creation   | MIT-License |
-| `resources/rocket_blue_half_power.png` 	| AI creation   | MIT-License |
-| `resources/rocket_blue_no_power.png` 	    | AI creation   | MIT-License |
-| `resources/rocket_blue_icon.png` 	        | AI creation   | MIT-License |
+| `resources/background.jpg`  	| [link](https://www.goodfon.com/minimalism/wallpaper-download-1600x900-kosmos-art-pikseli-8bit-planeta-zvezdy-retro-grafika.html)  | CC BY-NC 4.0, by https://www.goodfon.com/user/Kipish_f%C3%B6n/ |
+| `resources/rocket_blue_full_power.png` 	| This image was generated using OpenAI's DALL-E. | MIT-License |
+| `resources/rocket_blue_half_power.png` 	| This image was generated using OpenAI's DALL-E. | MIT-License |
+| `resources/rocket_blue_no_power.png` 	    | This image was generated using OpenAI's DALL-E. | MIT-License |
+| `resources/rocket_blue_icon.png` 	        | This image was generated using OpenAI's DALL-E. | MIT-License |
 | **Sounds**			        |     	                        |                               |
 | `resources/flap.wav`    	| [link](https://freesound.org/people/dave.des/sounds/127196/)	| Creative Commons 0 |
 | `resources/start.mp3`    	| [link](https://freesound.org/people/AbdrTar/sounds/519985/)  | Creative Commons 0 |
