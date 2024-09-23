@@ -260,9 +260,6 @@ class Menu extends Path2D {
 
   draw(ctx) {
     ctx.clearRect(0, 0, this.game.gameWidth, this.game.gameHeight);
-    ctx.lineWidth = 10;
-    ctx.fillStyle = "white";
-    ctx.strokeRect(100, 100, 200, 200);
     ctx.font = "20px serif";
     ctx.fillText(this.heading, 80, 40);
     ctx.font = "10px sans-serif";
