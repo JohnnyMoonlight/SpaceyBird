@@ -161,6 +161,16 @@ class Game {
         "Welcome to Spacey Bird"
       );
       menu.draw(this.ctx);
+
+      this.ctx.textAlign = "center";
+      this.ctx.fillText("Navigate the Menus with Up, Down and Enter.",
+        this.gameWidth/2,
+        280
+      );
+      this.ctx.fillText("Boost the rocket with the Space bar and avoid as many pipes as you can!",
+        this.gameWidth/2,
+        300
+      );
     }
 
     if (this.getGameState() == this.GAME_STATES.PLAY) {
