@@ -195,7 +195,7 @@ class Game {
 
     if (this.getGameState() == this.GAME_STATES.END) {
       let menuEntries = [
-        new MenuEntry("You loose.", () => console.log("End game")),
+        new MenuEntry("You lose.", () => console.log("End game")),
         new MenuEntry("Retry", () => {
           this.startGame();
         }),
