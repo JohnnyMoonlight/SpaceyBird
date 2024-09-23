@@ -91,8 +91,8 @@ class Pipe extends Path2D {
 class Game {
   GAME_STATES = {
     MENU: 1,
-    PAUSE: 2,
-    PLAY: 3,
+    PLAY: 2,
+    CREDITS: 3,
     END: 4,
   };
   gameWidth = 400;
@@ -147,7 +147,7 @@ class Game {
     if (this.getGameState() == this.GAME_STATES.MENU) {
       let menuEntries = [
         new MenuEntry("START", () => this.startGame()),
-        new MenuEntry("Credits", () => console.log("Credits")),
+        new MenuEntry("CREDITS", () => this.gameState = this.GAME_STATES.CREDITS),
       ];
       let menu = new Menu(
         this.canvas,
@@ -195,8 +195,8 @@ class Game {
 
     if (this.getGameState() == this.GAME_STATES.END) {
       let menuEntries = [
-        new MenuEntry("You lose.", () => console.log("End game")),
-        new MenuEntry("Retry", () => {
+        new MenuEntry("MAIN MENU", () => this.gameState = this.GAME_STATES.MENU),
+        new MenuEntry("RETRY", () => {
           this.startGame();
         }),
       ];
@@ -210,6 +210,25 @@ class Game {
         `Your score: ${this.score}`
       );
       endScreen.draw(this.ctx);
+    }
+
+    if (this.getGameState() == this.GAME_STATES.CREDITS) {
+      let returnFunction = () => this.gameState = this.GAME_STATES.MENU;
+      let menuEntries = [
+        new MenuEntry("Made with ♥  at", returnFunction),
+        new MenuEntry("Zentrum für Technikkultur", returnFunction),
+        new MenuEntry("in  Landau by Tobias.", returnFunction)
+      ];
+
+      let creditScreen = new Menu(
+        this.canvas,
+        this.ctx,
+        this,
+        () => this.draw(),
+        menuEntries,
+        `SPACEY ROCKET`
+      );
+      creditScreen.draw(this.ctx);
     }
   }
 }
