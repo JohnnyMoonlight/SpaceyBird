@@ -110,6 +110,7 @@ class Game {
     this.fpsCtx = this.canvas.getContext("2d");
     this.soundManager = new SoundManager();
     this.playerImageSelector = new PlayerImageSelector();
+    this.soundManager.registerSoundEvent(new Event("fail"));
   }
 
   init() {
@@ -190,11 +191,12 @@ class Game {
         this.pipe.hitPlayer(this.player) ||
         this.player.playerY > this.gameHeight
       ) {
-        debugger;
+        
         this.player.canvas.removeEventListener(
           "keyup",
           this.player._flapHandle
         );
+        this.canvas.dispatchEvent(new Event("fail"));
         this.score = this.pipe.number;
         this.endGame();
       } else {
@@ -435,10 +437,12 @@ class SoundManager {
     this.flap = "./resources/flap.wav";
     this.navSound = "./resources/flap.wav";
     this.idea = "./resources/idea.wav";
+    this.fail = "./resources/fail.wav";
     this.addSound("navEvent", this.navSound);
     this.addSound("start", this.start);
     this.addSound("flap", this.flap);
     this.addSound("pipePassed", this.idea);
+    this.addSound("fail", this.fail);
   }
 
   addSound(soundName, sound) {

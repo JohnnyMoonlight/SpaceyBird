@@ -26,6 +26,7 @@ You are welcome to open pull requests or issues, if they serve the goal to make 
 | **Sounds**			        |     	                        |                               |
 | `resources/flap.wav`    	| [link](https://freesound.org/people/dave.des/sounds/127196/)	| Creative Commons 0 |
 | `resources/start.mp3`    	| [link](https://freesound.org/people/AbdrTar/sounds/519985/)  | Creative Commons 0 |
+| `resources/fail.wav`    	| [link](https://freesound.org/people/OwlStorm/sounds/404743/)  | Creative Commons 0 |
 
 
 
