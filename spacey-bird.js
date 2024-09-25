@@ -190,8 +190,9 @@ class Game {
         this.pipe.hitPlayer(this.player) ||
         this.player.playerY > this.gameHeight
       ) {
+        debugger;
         this.player.canvas.removeEventListener(
-          "click",
+          "keyup",
           this.player._flapHandle
         );
         this.score = this.pipe.number;
