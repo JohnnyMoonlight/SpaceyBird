@@ -463,5 +463,4 @@ class SoundManager {
   }
 }
 
-let game = new Game().init();
-game.init();
+new Game().init();
