@@ -191,7 +191,6 @@ class Game {
         this.pipe.hitPlayer(this.player) ||
         this.player.playerY > this.gameHeight
       ) {
-        
         this.player.canvas.removeEventListener(
           "keyup",
           this.player._flapHandle
