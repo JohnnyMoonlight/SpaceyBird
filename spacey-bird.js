@@ -108,7 +108,7 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.debug = false;
     this.fpsCtx = this.canvas.getContext("2d");
-    this.soundManager = new SoundManager();
+    this.soundManager = new SoundManager(this.canvas);
     this.playerImageSelector = new PlayerImageSelector();
     this.soundManager.registerSoundEvent(new Event("fail"));
   }
@@ -429,8 +429,8 @@ class Player extends Path2D {
 }
 
 class SoundManager {
-  constructor() {
-    this.canvas = document.getElementById("gameContainer");
+  constructor(target) {
+    this.target = target;
     this.soundMap = new Map();
     this.eventToSoundMap = new Map();
     this.start = "./resources/start.mp3";
@@ -438,15 +438,11 @@ class SoundManager {
     this.navSound = "./resources/flap.wav";
     this.idea = "./resources/idea.wav";
     this.fail = "./resources/fail.wav";
-    this.addSound("navEvent", this.navSound);
-    this.addSound("start", this.start);
-    this.addSound("flap", this.flap);
-    this.addSound("pipePassed", this.idea);
-    this.addSound("fail", this.fail);
-  }
-
-  addSound(soundName, sound) {
-    this.soundMap.set(soundName, sound);
+    this.soundMap.set("navEvent", this.navSound);
+    this.soundMap.set("start", this.start);
+    this.soundMap.set("flap", this.flap);
+    this.soundMap.set("pipePassed", this.idea);
+    this.soundMap.set("fail", this.fail);
   }
 
   registerSoundEvent(event, sound) {
@@ -461,11 +457,11 @@ class SoundManager {
     } else {
       selectedSound = sound;
     }
-    this.canvas.addEventListener(event.type, () =>
+    this.target.addEventListener(event.type, () =>
       new Audio(selectedSound).play()
     );
   }
 }
 
-let game = new Game();
+let game = new Game().init();
 game.init();
